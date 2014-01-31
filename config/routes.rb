@@ -5,6 +5,7 @@ Bloccit::Application.routes.draw do
   resources :users, only: [:show, :index] # create a route for users#show
 
   resources :posts, only: [:index]
+
   resources :topics do
     resources :posts, except: [:index], controller: 'topics/posts' do
       resources :comments, only: [:create, :destroy]
