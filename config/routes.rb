@@ -1,10 +1,9 @@
 Bloccit::Application.routes.draw do
 
-  get "posts/index"
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
-devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  resources :users, only: [:show, :index] # create a route for users#show
 
-resources :users, only: [:show, :index] # create a route for users#show
   resources :posts, only: [:index]
   resources :topics do
     resources :posts, except: [:index], controller: 'topics/posts' do
