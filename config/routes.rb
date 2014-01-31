@@ -15,9 +15,9 @@ Bloccit::Application.routes.draw do
     end
   end
 
-  authenticated :user do
-    root :to => "topics#index"
-  end
+  # authenticated :user do
+  #   root :to => "topics#index"
+  # end
 
   match "about" => 'welcome#about', via: :get
 
